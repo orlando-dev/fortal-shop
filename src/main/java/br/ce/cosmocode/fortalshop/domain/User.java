@@ -11,11 +11,12 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "users")
+@Table(name = "users", schema = "marketplace")
 public class User {
 
     @Id
@@ -23,8 +24,15 @@ public class User {
     private UUID id;
 
     @Column(unique = true)
+    @NotBlank(message = "O nome de usuário não pode estar vazio")
     private String username;
+
+    @Column(nullable = false)
+    @NotBlank(message = "nome não pode estar vazio")
     private String name;
+    
+    @Column(nullable = false)
+    @NotBlank(message = "A senha não pode estar vazia")
     private String password;
 
     @CreationTimestamp

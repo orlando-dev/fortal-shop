@@ -5,9 +5,10 @@ import java.util.UUID;
 
 import br.ce.cosmocode.fortalshop.domain.User;
 
-public interface UserRepository {
+public interface IUserRepository {
     User save(User user);
     User findById(UUID id);
+    User findByUsername(String username);
     List<User> findAll();
     void delete(User user);
 }
